@@ -1,0 +1,62 @@
+﻿@page "/weather" 
+
+@inject IHttpClientFactory _clientFactory
+
+
+@if(string.IsNullOrEmpty(error) is false)
+{
+    <p>@error</p>
+}
+else if(forecast is null)
+{
+   <h3>Loading...</h3>
+}
+else
+{
+    <h1>@forecast.Title</h1>
+
+    <table class="table table-bordered " style="margin-top:2px;">
+        <thead>
+            <tr>
+                <th>Date</th>
+                <th>Weather State</th>
+                <th>Low</th>
+                <th>High</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach(var weather in forecast.Consolidated_weather)
+            {
+                <tr>
+                    <td>@weather.Applicable_date</td>
+                    <td>@weather.Weather_state_name</td>
+                    <td>@weather.Min_temp</td>
+                    <td>@weather.Max_temp</td>
+                </tr>
+            }
+        </tbody>
+
+    </table>
+}
+
+@code {     
+
+    WeatherForecastModel forecast;
+    string error;
+
+    protected override async Task OnInitializedAsync()
+    {
+       
+        var client = _clientFactory.CreateClient("meta");
+
+        try
+        {
+            forecast = await client.GetFromJsonAsync<WeatherForecastModel>("location/946738/");
+            error = null;
+        }
+        catch(Exception ex)
+        {
+            error = $"There is an error:{ex.Message}";
+        }
+    }
+}

@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "H6iUVaatJuA+W9QiRY7vtva3L7Qq4GYNihkXrP613ZemzYYgdXHIJ2StHHkM/5SOYAiiOmu9cO7WNk/VT6v6Yw==",
+  "success": true,
+  "projectFilePath": "C:\\WeatherApp\\WeatherApp\\WeatherApp.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Σεραφείμ\\.nuget\\packages\\system.net.http.json\\5.0.0\\system.net.http.json.5.0.0.nupkg.sha512",
+    "C:\\Users\\Σεραφείμ\\.nuget\\packages\\system.text.json\\5.0.0\\system.text.json.5.0.0.nupkg.sha512"
+  ],
+  "logs": []
+}
